@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
-app = Flask("EmotionDetection")
+app = Flask(__name__)
 
 @app.route('/emotionDetector')
-def emotion_detector():
+def emotion_detector_server():
     text_to_analyze = request.args.get('textToAnalyze')
     response = emotion_detector(text_to_analyze)
     if response is None: return "Invalid input! Try again." 
