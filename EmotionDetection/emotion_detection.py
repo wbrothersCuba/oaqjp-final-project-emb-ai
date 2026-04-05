@@ -17,6 +17,13 @@ def emotion_detector(text_to_analyze):
             'sadness': emotions['sadness'],
             'dominant_emotion': dominant_emotion
         }
-        return result
-    else:
-        return {'error': 'Failed to retrieve emotions'}
+    elif response.status_code == 400:
+        result = {
+            'anger': None,
+            'disgust': None,
+            'fear': None,
+            'joy': None,
+            'sadness': None,
+            'dominant_emotion': None
+        }
+    return result
